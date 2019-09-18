@@ -4,10 +4,12 @@ import { Route, Link } from 'react-router-dom';
 
 const Transactions = (props) => {
 
+  console.log('transactions', props)
+
   return (
     <div>
       {props.transactions.map(transaction =>
-       <Transaction key={transaction.id} transaction={transaction}/>)}
+         <Transaction key={transaction.id} transaction={transaction}/>)}
     </div>
 
   )

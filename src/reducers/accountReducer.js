@@ -1,18 +1,19 @@
 
 export default function accountReducer(state = {accounts: [], totalBalance: ''}, action) {
       let total = 0
-  switch (action.type) {
-    case 'FETCH_ACCOUNTS':
 
+  switch (action.type) {
+
+    case 'FETCH_ACCOUNTS':
       action.payload.map(a => total += a.balance)
       return {...state, accounts: action.payload, totalBalance: total}
-    case 'ADD_ACCOUNT':
 
+    case 'ADD_ACCOUNT':
         state.accounts.map(a => total += a.balance)
         total += action.payload.balance
       return {...state, accounts: [...state.accounts, action.payload], totalBalance: total}
-      case 'ADD_TRANSACTION':
 
+    case 'ADD_TRANSACTION':
           state.accounts.map(a => a.id != action.payload.id ? total += a.balance : 0)
           total += action.payload.balance
         return  {...state, totalBalance: total, accounts: state.accounts.map(account => {
@@ -22,6 +23,7 @@ export default function accountReducer(state = {accounts: [], totalBalance: ''},
             return account
           }
         })}
+
     default:
       return state
   }

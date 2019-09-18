@@ -2,7 +2,7 @@ export const addTransaction = (data, accountId, history) => {
 
 
   return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/transactions`, {
+    fetch(`http://localhost:3000/api/v1/accounts/${accountId}/transactions`, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
